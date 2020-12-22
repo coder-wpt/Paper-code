@@ -71,11 +71,11 @@ int main()
   };
 */
 
-    Node T("T",0,0.6544);
-    Node CV("CV",0,0.5369);
-    Node AA("AA",0,0.3902);
-    Node DF("DF",0,0.5123);
-    Node CC("CC",0,0.6984);
+    Node T("T",3,0.6544);
+    Node CV("CV",1,0.5369);
+    Node AA("AA",2,0.3902);
+    Node DF("DF",3,0.5123);
+    Node CC("CC",5,0.6984);
     Node PLZ("PLZ",0.6921,0.2059);
     Node A90("A90",0.6045,0.1901);
     Node GCL("GCL",0.6330,0.3858);
@@ -191,7 +191,7 @@ int main()
 
  /* CircuitFinder<5> CF(A);
   CF.run();*/
-  CircuitFinder<77>CF2(B,25,42,10);
+  CircuitFinder<77>CF2(B,25,42,10,Nlist);
   CF2.run();
   
   finish=clock();

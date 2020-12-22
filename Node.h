@@ -10,7 +10,7 @@ public:
     Node(string Eqtype,double ab,double S_ab):Eq_type(Eqtype),Ability(ab),S_Ability(S_ab) {}
     ~Node() {}
 
-private:
+
 
     string Eq_type;
     double Ability;
@@ -21,8 +21,16 @@ class Data
 {
 public:
     Data(){}
+    Data(const Data& d){
+        this->data=d.data;
+    } 
     ~Data(){}
 
+    vector<Node>& getNlist()
+    {
+        return this->data;
+    }
+    
     void addnode(Node n,int num){
         for(int i = 0 ; i < num ; ++i)
         {

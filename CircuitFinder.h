@@ -23,7 +23,7 @@ typedef std::list<int> NodeList;
 template<int N>
 class CircuitFinder
 {
-  std::vector<Node> data;
+  Data data;
   std::vector<NodeList> AK;
   std::vector<int> Stack;
   std::vector<bool> Blocked;
@@ -34,15 +34,16 @@ class CircuitFinder
   int S;
   int t_sum,n_sum,g_sum;
   int judge1,judge2;
+  double Total_score;
 
   void unblock(int U);
   bool circuit(int V);
   void output();
-
+  void CalAblility(); 
   int c_num=0,g_num=0,u_num=0;
 public:
-  CircuitFinder(int Array[N][8],int s,int n,int g,vector<Node>Data)
-    : AK(N), Blocked(N), B(N),t_sum(s),n_sum(n),g_sum(g),data(Data)
+  CircuitFinder(int Array[N][8],int s,int n,int g,Data& d)
+    : AK(N), Blocked(N), B(N),t_sum(s),n_sum(n),g_sum(g),data(d)
   {
     //<=judge1 //judge1< <=judge2 //judge2<
     judge1=t_sum;
@@ -153,6 +154,30 @@ void CircuitFinder<N>::output()
 }
 
 template<int N>
+void CircuitFinder<N>::CalAblility()
+{
+    Total_score=0;
+    double divi;
+    double temp;
+    vector<Node>temp_n=data.getNlist();
+    
+    for(auto it:CC)
+    {
+        temp=1;
+        divi =*it.begin();
+        for(auto I = it.begin()+1, E =it.end(); I!=E ; ++E)
+        {
+            
+            temp*=(temp_n[*I].Ability*temp_n[*I].S_Ability);           
+        }
+        temp/=temp_n[*it.begin().S_Ability];
+        temp*=temp_n[*it.begin().Ability]; 
+        cout<<temp<<endl;
+        Total_score+=temp;
+    }
+}
+
+template<int N>
 void CircuitFinder<N>::run()
 {
   Stack.clear();
@@ -170,7 +195,10 @@ void CircuitFinder<N>::run()
   std::cout << "Combat circuit's sum=" << c_num << std::endl;
   std::cout << "Guarantee circuit's sum=" << g_num << std::endl;
   std::cout << "Useless circuit's sum=" << u_num << std::endl;
+  std::cout << "Total_score=" << Total_score <<std::endl;
 }
+
+
 
 #endif // CIRCUIT_FINDER_H
 
