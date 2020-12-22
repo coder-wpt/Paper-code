@@ -16,12 +16,14 @@
 #include <iostream>
 #include <list>
 #include <vector>
+#include "Node.h"
 
 typedef std::list<int> NodeList;
 
 template<int N>
 class CircuitFinder
 {
+  std::vector<Node> data;
   std::vector<NodeList> AK;
   std::vector<int> Stack;
   std::vector<bool> Blocked;
@@ -39,8 +41,8 @@ class CircuitFinder
 
   int c_num=0,g_num=0,u_num=0;
 public:
-  CircuitFinder(int Array[N][8],int s,int n,int g)
-    : AK(N), Blocked(N), B(N),t_sum(s),n_sum(n),g_sum(g)
+  CircuitFinder(int Array[N][8],int s,int n,int g,vector<Node>Data)
+    : AK(N), Blocked(N), B(N),t_sum(s),n_sum(n),g_sum(g),data(Data)
   {
     //<=judge1 //judge1< <=judge2 //judge2<
     judge1=t_sum;
