@@ -28,9 +28,11 @@
 */
 
 #include "CircuitFinder.h"
+#include "Node.h"
 #include <iostream>
 #include <time.h>
 #include <iomanip>
+
 using namespace std;
 
 int main()
@@ -69,6 +71,38 @@ int main()
   };
 */
 
+    Node T("T",0,0.6544);
+    Node CV("CV",0,0.5369);
+    Node AA("AA",0,0.3902);
+    Node DF("DF",0,0.5123);
+    Node CC("CC",0,0.6984);
+    Node PLZ("PLZ",0.6921,0.2059);
+    Node A90("A90",0.6045,0.1901);
+    Node GCL("GCL",0.6330,0.3858);
+    Node S704("S704",0.6518,0.3388);
+    Node ZCL("ZCL",0.6438,0.5079);
+    Node ZCY("ZCY",0.6949,0.5370);
+
+    Node PD("PD",0.6172,0);
+    Node CDC("CDC",0.7019,0);
+    Node SC("SC",0.5881,0);
+    
+    Data Nlist;
+    Nlist.addnode(T,6);
+    Nlist.addnode(CV,8);
+    Nlist.addnode(AA,6);
+    Nlist.addnode(DF,4);
+    Nlist.addnode(CC,1);
+    Nlist.addnode(PLZ,18);
+    Nlist.addnode(A90,6);
+    Nlist.addnode(GCL,12);
+    Nlist.addnode(S704,1);
+    Nlist.addnode(ZCL,4);
+    Nlist.addnode(ZCY,1);
+    Nlist.addnode(PD,5);
+    Nlist.addnode(CDC,1);
+    Nlist.addnode(SC,4);
+    
     int B[77][8]={
     55,0,0,0,0,0,0,0,
     55,54,0,0,0,0,0,0,
